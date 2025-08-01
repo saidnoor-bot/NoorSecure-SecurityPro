@@ -4,3 +4,6 @@ diagrams/*.svg
 .bash_history
 .bash_history
 .git-credentials
+.git-credentials
+*.zip
+*.log
