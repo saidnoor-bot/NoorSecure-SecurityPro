@@ -1,3 +1,10 @@
+
+![AWS](https://img.shields.io/badge/Built%20With-AWS-orange)
+![IaC](https://img.shields.io/badge/Infrastructure--as--Code-CloudFormation-blue)
+![Security](https://img.shields.io/badge/Security-Best%20Practices-green)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-blue)](https://linkedin.com/in/said-noor-710592100)
+
+
 # NoorSecure-SecurityPro — A Cloud Security Reference Architecture
 
 **NoorSecure-SecurityPro** is a professional-grade AWS cloud security architecture built to demonstrate secure multi-tier design, IAM best practices, KMS encryption, event-driven monitoring, and serverless authentication patterns. It uses AWS CloudFormation (modular multi-stack), GitHub version control, and real AWS services to mirror real-world security standards.
