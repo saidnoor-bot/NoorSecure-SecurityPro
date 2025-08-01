@@ -1,0 +1,4 @@
+aws s3api put-bucket-policy \
+  --bucket noorsecure-logs-429128462098-us-east-1 \
+  --policy file://bucket-policy.json
+

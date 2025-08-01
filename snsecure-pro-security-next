@@ -1,0 +1,45 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: snsecure-pro-security - GuardDuty, Security Hub, and Inspector monitoring
+
+Parameters:
+  ProjectTag:
+    Type: String
+    Default: snsecure-pro
+
+Resources:
+
+  GuardDutyDetector:
+    Type: AWS::GuardDuty::Detector
+    Properties:
+      Enable: true
+      FindingPublishingFrequency: SIX_HOURS
+      Tags:
+        - Key: Project
+          Value: !Ref ProjectTag
+
+  SecurityHub:
+    Type: AWS::SecurityHub::Hub
+    Properties:
+      Tags:
+        Project: !Ref ProjectTag
+
+  Inspector2Filter:
+    Type: AWS::InspectorV2::Filter
+    Properties:
+      Name: !Sub "${ProjectTag}-inspector2-filter"
+      Description: "Minimal filter to satisfy Inspector requirement"
+      FilterAction: NONE
+      FilterCriteria:
+        resourceType:
+          - comparison: EQUALS
+            value: EC2
+
+Outputs:
+  GuardDutyDetectorId:
+    Description: GuardDuty detector ID
+    Value: !Ref GuardDutyDetector
+
+  SecurityHubArn:
+    Description: Security Hub ARN
+    Value: !Ref SecurityHub
+

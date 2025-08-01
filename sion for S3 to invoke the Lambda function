@@ -1,0 +1,39 @@
+{
+    "FunctionName": "S3UploadProcessor-New",
+    "FunctionArn": "arn:aws:lambda:us-east-1:429128462098:function:S3UploadProcessor-New",
+    "Runtime": "python3.9",
+    "Role": "arn:aws:iam::429128462098:role/S3LambdaRole-New",
+    "Handler": "lambda_function.lambda_handler",
+    "CodeSize": 746,
+    "Description": "",
+    "Timeout": 3,
+    "MemorySize": 128,
+    "LastModified": "2025-07-11T00:46:34.678+0000",
+    "CodeSha256": "SDSLRyZzEqScK6ti1p8TqVJbIEFy5DOz4ZU9OWCd2TI=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "966a6102-81eb-4e2b-900f-d6dfd2613716",
+    "State": "Pending",
+    "StateReason": "The function is being created.",
+    "StateReasonCode": "Creating",
+    "PackageType": "Zip",
+    "Architectures": [
+        "x86_64"
+    ],
+    "EphemeralStorage": {
+        "Size": 512
+    },
+    "SnapStart": {
+        "ApplyOn": "None",
+        "OptimizationStatus": "Off"
+    },
+    "RuntimeVersionConfig": {
+        "RuntimeVersionArn": "arn:aws:lambda:us-east-1::runtime:bb621aef6cc9508f1875aa986531f956f051c1280d7f97986e28a224ae44186e"
+    },
+    "LoggingConfig": {
+        "LogFormat": "Text",
+        "LogGroup": "/aws/lambda/S3UploadProcessor-New"
+    }
+}

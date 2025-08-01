@@ -1,0 +1,18 @@
+{
+  "Comment": "Alias login.noorshare.com to Cognito domain",
+  "Changes": [
+    {
+      "Action": "UPSERT",
+      "ResourceRecordSet": {
+        "Name": "login.noorshare.com",
+        "Type": "CNAME",
+        "TTL": 300,
+        "ResourceRecords": [
+          {
+            "Value": "d1ciobs3qdyxs6.cloudfront.net"
+          }
+        ]
+      }
+    }
+  ]
+}

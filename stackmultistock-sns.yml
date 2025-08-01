@@ -1,0 +1,13 @@
+Resources:
+  SecuritySNSTopic:
+    Type: AWS::SNS::Topic
+    Properties:
+      TopicName: StackMultiStockSecurityAlerts
+
+  SecuritySNSEmailSubscription:
+    Type: AWS::SNS::Subscription
+    Properties:
+      TopicArn: !Ref SecuritySNSTopic
+      Protocol: email
+      Endpoint: snsnoor2021@gmail.com  # <-- Use your real email here
+

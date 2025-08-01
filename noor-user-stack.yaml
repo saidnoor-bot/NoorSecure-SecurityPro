@@ -1,0 +1,103 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Cognito User Pool + Identity Pool + IAM roles + S3 access for NoorShare
+
+Parameters:
+  UploadBucketName:
+    Type: String
+  StaticSiteBucketName:
+    Type: String
+
+Resources:
+
+  # Cognito User Pool
+  NoorUserPool:
+    Type: AWS::Cognito::UserPool
+    Properties:
+      UserPoolName: NoorUserPool
+      AutoVerifiedAttributes:
+        - email
+      Policies:
+        PasswordPolicy:
+          MinimumLength: 8
+          RequireUppercase: true
+          RequireLowercase: true
+          RequireNumbers: true
+          RequireSymbols: false
+      UsernameAttributes:
+        - email
+
+  # User Pool Client
+  NoorUserPoolClient:
+    Type: AWS::Cognito::UserPoolClient
+    Properties:
+      ClientName: NoorUserPoolClient
+      UserPoolId: !Ref NoorUserPool
+      GenerateSecret: false
+      ExplicitAuthFlows:
+        - ALLOW_USER_PASSWORD_AUTH
+        - ALLOW_REFRESH_TOKEN_AUTH
+        - ALLOW_USER_SRP_AUTH
+
+  # Identity Pool
+  NoorIdentityPool:
+    Type: AWS::Cognito::IdentityPool
+    Properties:
+      IdentityPoolName: NoorIdentityPool
+      AllowUnauthenticatedIdentities: false
+      CognitoIdentityProviders:
+        - ClientId: !Ref NoorUserPoolClient
+          ProviderName: !GetAtt NoorUserPool.ProviderName
+
+  # Auth Role
+  NoorAuthRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: NoorAuthenticatedRole
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Federated: cognito-identity.amazonaws.com
+            Action: sts:AssumeRoleWithWebIdentity
+            Condition:
+              StringEquals:
+                cognito-identity.amazonaws.com:aud: !Ref NoorIdentityPool
+              "ForAnyValue:StringLike":
+                cognito-identity.amazonaws.com:amr: authenticated
+      Policies:
+        - PolicyName: S3AccessPolicy
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - s3:PutObject
+                  - s3:GetObject
+                  - s3:DeleteObject
+                Resource:
+                  Fn::Sub: arn:aws:s3:::${UploadBucketName}/private/${!cognito-identity.amazonaws.com:sub}/*
+              - Effect: Allow
+                Action:
+                  - s3:GetObject
+                Resource:
+                  Fn::Sub: arn:aws:s3:::${StaticSiteBucketName}/*
+
+  # Identity Pool Role Attachment
+  IdentityPoolRoleAttachment:
+    Type: AWS::Cognito::IdentityPoolRoleAttachment
+    Properties:
+      IdentityPoolId: !Ref NoorIdentityPool
+      Roles:
+        authenticated: !GetAtt NoorAuthRole.Arn
+
+Outputs:
+  UserPoolId:
+    Value: !Ref NoorUserPool
+  UserPoolClientId:
+    Value: !Ref NoorUserPoolClient
+  IdentityPoolId:
+    Value: !Ref NoorIdentityPool
+  AuthRoleArn:
+    Value: !GetAtt NoorAuthRole.Arn
+

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NoorShare - Google Authentication</title>
+    <script src=https://apis.google.com/js/platform.js async defer></script>
+    <meta name=google-signin-client_id content=YOUR_GOOGLE_CLIENT_ID.apps.googleusercontent.com>
+    <script src=https://sdk.amazonaws.com/js/aws-sdk-2.1048.0.min.js></script>
+</head>
+<body>
+    <h1>NoorShare - Google Authentication Test</h1>
+    <div class=g-signin2 data-onsuccess=onSignIn></div>
+    <div id=status></div>
+    
+    <script>
+    function onSignIn(googleUser) {
+        document.getElementById('status').innerHTML = 'Signed in as: ' + googleUser.getBasicProfile().getName();
+        
+        // Get the Google ID token
+        var id_token = googleUser.getAuthResponse().id_token;
+        
+        // Configure Cognito
+        AWS.config.region = 'us-east-1'; // Your region
+        AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+            IdentityPoolId: 'YOUR_IDENTITY_POOL_ID',
+            Logins: {
+                'accounts.google.com': id_token
+            }
+        });
+        
+        // Get AWS credentials
+        AWS.config.credentials.get(function(err) {
+            if (err) {
+                document.getElementById('status').innerHTML += '<br>Error: ' + err;
+                console.log(err);
+            } else {
+                document.getElementById('status').innerHTML += '<br>Successfully authenticated with Cognito!';
+                
+                // Test S3 access
+                var s3 = new AWS.S3();
+                s3.listObjects({
+                    Bucket: 'noorshare-static-website-new'
+                }, function(err, data) {
+                    if (err) {
+                        document.getElementById('status').innerHTML += '<br>S3 Error: ' + err;
+                    } else {
+                        document.getElementById('status').innerHTML += '<br>S3 access successful! Found ' + data.Contents.length + ' objects.';
+                    }
+                });
+            }
+        });
+    }
+    </script>
+</body>
+</html>

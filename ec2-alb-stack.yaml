@@ -1,0 +1,150 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Full NoorWebStack with ALB, EC2, Lambda Moderation, IAM Roles, and S3 Bucket
+
+Parameters:
+  VpcId:
+    Type: String
+  PublicSubnets:
+    Type: CommaDelimitedList
+
+Resources:
+
+  WebSG:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Allow HTTP
+      VpcId: !Ref VpcId
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
+
+  EC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-0c101f26f147fa7fd # Amazon Linux 2023 (replace as needed)
+      InstanceType: t2.micro
+      NetworkInterfaces:
+        - AssociatePublicIpAddress: true
+          SubnetId: !Select [0, !Ref PublicSubnets]
+          DeviceIndex: 0
+          GroupSet:
+            - !Ref WebSG
+      UserData:
+        Fn::Base64: !Sub |
+          #!/bin/bash
+          yum update -y
+          yum install -y httpd
+          systemctl start httpd
+          echo "<h1>Hello from NoorShare!</h1>" > /var/www/html/index.html
+
+  NoorALB:
+    Type: AWS::ElasticLoadBalancingV2::LoadBalancer
+    Properties:
+      Name: NoorALB
+      Subnets: !Ref PublicSubnets
+      SecurityGroups:
+        - !Ref WebSG
+      Scheme: internet-facing
+      LoadBalancerAttributes:
+        - Key: idle_timeout.timeout_seconds
+          Value: '60'
+
+  ALBListener:
+    Type: AWS::ElasticLoadBalancingV2::Listener
+    Properties:
+      LoadBalancerArn: !Ref NoorALB
+      Port: 80
+      Protocol: HTTP
+      DefaultActions:
+        - Type: fixed-response
+          FixedResponseConfig:
+            StatusCode: 200
+            ContentType: text/plain
+            MessageBody: ALB is working!
+
+  RekognitionLambdaRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: RekognitionScanLambdaRole
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: RekognitionLambdaPolicy
+          PolicyDocument:
+            Version: "2012-10-17"
+            Statement:
+              - Effect: Allow
+                Action:
+                  - rekognition:DetectModerationLabels
+                  - s3:GetObject
+                  - s3:PutObject
+                Resource: "*"
+              - Effect: Allow
+                Action:
+                  - logs:CreateLogGroup
+                  - logs:CreateLogStream
+                  - logs:PutLogEvents
+                Resource: "*"
+
+  ImageModerationFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: RekognitionScanLambda
+      Handler: lambda_function.lambda_handler
+      Role: !GetAtt RekognitionLambdaRole.Arn
+      Runtime: python3.11
+      Timeout: 10
+      Code:
+        ZipFile: |
+          import json
+          import boto3
+
+          def lambda_handler(event, context):
+              s3 = boto3.client('s3')
+              rekognition = boto3.client('rekognition')
+
+              for record in event['Records']:
+                  bucket = record['s3']['bucket']['name']
+                  key = record['s3']['object']['key']
+
+                  try:
+                      response = rekognition.detect_moderation_labels(
+                          Image={'S3Object': {'Bucket': bucket, 'Name': key}},
+                          MinConfidence=70
+                      )
+
+                      labels = response['ModerationLabels']
+                      if labels:
+                          new_key = "moderated/" + key
+                      else:
+                          new_key = "safe/" + key
+
+                      copy_source = {'Bucket': bucket, 'Key': key}
+                      s3.copy_object(CopySource=copy_source, Bucket=bucket, Key=new_key)
+                      s3.delete_object(Bucket=bucket, Key=key)
+
+                  except Exception as e:
+                      print("Error occurred:", str(e))
+                      raise e
+
+  LambdaInvokePermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !Ref ImageModerationFunction
+      Action: lambda:InvokeFunction
+      Principal: s3.amazonaws.com
+      SourceAccount: !Sub "${AWS::AccountId}"
+      SourceArn: !Sub arn:aws:s3:::noorshare-user-uploads
+
+Outputs:
+  ALBDNSName:
+    Description: DNS Name of the Load Balancer
+    Value: !GetAtt NoorALB.DNSName
+

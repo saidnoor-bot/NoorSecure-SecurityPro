@@ -1,0 +1,12 @@
+RekognitionLambda:
+  Type: AWS::Lambda::Function
+  Properties:
+    FunctionName: NoorRekognitionFunction
+    Handler: rekognition_trigger.handler
+    Role: !GetAtt RekognitionLambdaRole.Arn
+    Runtime: python3.12
+    Timeout: 15
+    Code:
+      S3Bucket: noorshare-user-uploads
+      S3Key: lambda/function.zip
+

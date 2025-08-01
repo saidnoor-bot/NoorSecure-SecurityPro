@@ -1,0 +1,55 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Security Monitoring Stack for StackMultiStock - CloudTrail + CloudWatch + SNS Alerts
+
+Parameters:
+  SNSTopicArn:
+    Type: String
+    Description: ARN of the SNS topic to receive CloudWatch alerts
+
+Resources:
+
+  CloudTrailLogBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub stackmultistock-cloudtrail-logs-${AWS::AccountId}
+      VersioningConfiguration:
+        Status: Enabled
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: true
+        BlockPublicPolicy: true
+        IgnorePublicAcls: true
+        RestrictPublicBuckets: true
+
+  CloudTrailTrail:
+    Type: AWS::CloudTrail::Trail
+    Properties:
+      TrailName: StackMultiStockTrail
+      S3BucketName: !Ref CloudTrailLogBucket
+      IsLogging: true
+      IsMultiRegionTrail: true
+      IncludeGlobalServiceEvents: true
+
+  UnauthorizedAPICallAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmName: UnauthorizedAPICall
+      AlarmDescription: "Triggers on unauthorized AWS API calls"
+      MetricName: "UnauthorizedOperation"
+      Namespace: "AWS/CloudTrail"
+      Statistic: "Sum"
+      Period: 300
+      EvaluationPeriods: 1
+      Threshold: 1
+      ComparisonOperator: "GreaterThanOrEqualToThreshold"
+      AlarmActions:
+        - !Ref SNSTopicArn
+
+Outputs:
+  CloudTrailName:
+    Value: !Ref CloudTrailTrail
+    Description: CloudTrail name
+
+  AlarmName:
+    Value: !Ref UnauthorizedAPICallAlarm
+    Description: CloudWatch alarm name
+

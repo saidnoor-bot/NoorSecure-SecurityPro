@@ -1,0 +1,85 @@
+{
+    "logGroups": [
+        {
+            "logGroupName": "/aws/lambda/A4L-IPv6WorkaroundLambda-14Kuhpbd91rI",
+            "creationTime": 1752040264776,
+            "metricFilterCount": 0,
+            "arn": "arn:aws:logs:us-east-1:429128462098:log-group:/aws/lambda/A4L-IPv6WorkaroundLambda-14Kuhpbd91rI:*",
+            "storedBytes": 0,
+            "logGroupClass": "STANDARD",
+            "logGroupArn": "arn:aws:logs:us-east-1:429128462098:log-group:/aws/lambda/A4L-IPv6WorkaroundLambda-14Kuhpbd91rI"
+        },
+        {
+            "logGroupName": "/aws/lambda/CWAGENT-IPv6WorkaroundLambda-AVXW6oV7XErw",
+            "creationTime": 1750100891094,
+            "metricFilterCount": 0,
+            "arn": "arn:aws:logs:us-east-1:429128462098:log-group:/aws/lambda/CWAGENT-IPv6WorkaroundLambda-AVXW6oV7XErw:*",
+            "storedBytes": 7938,
+            "logGroupClass": "STANDARD",
+            "logGroupArn": "arn:aws:logs:us-east-1:429128462098:log-group:/aws/lambda/CWAGENT-IPv6WorkaroundLambda-AVXW6oV7XErw"
+        },
+        {
+            "logGroupName": "/aws/lambda/GenerateUploadURL",
+            "creationTime": 1751258266284,
+            "metricFilterCount": 0,
+            "arn": "arn:aws:logs:us-east-1:429128462098:log-group:/aws/lambda/GenerateUploadURL:*",
+            "storedBytes": 3758,
+            "logGroupClass": "STANDARD",
+            "logGroupArn": "arn:aws:logs:us-east-1:429128462098:log-group:/aws/lambda/GenerateUploadURL"
+        },
+        {
+            "logGroupName": "/aws/lambda/IAMROLEDEMO-IPv6WorkaroundLambda-qWhf2pTdBT35",
+            "creationTime": 1750051218727,
+            "metricFilterCount": 0,
+            "arn": "arn:aws:logs:us-east-1:429128462098:log-group:/aws/lambda/IAMROLEDEMO-IPv6WorkaroundLambda-qWhf2pTdBT35:*",
+            "storedBytes": 7947,
+            "logGroupClass": "STANDARD",
+            "logGroupArn": "arn:aws:logs:us-east-1:429128462098:log-group:/aws/lambda/IAMROLEDEMO-IPv6WorkaroundLambda-qWhf2pTdBT35"
+        },
+        {
+            "logGroupName": "/aws/lambda/MONOLITHTOEC2DB-IPv6WorkaroundLambda-9sLKxjPPo2sh",
+            "creationTime": 1750130529745,
+            "metricFilterCount": 0,
+            "arn": "arn:aws:logs:us-east-1:429128462098:log-group:/aws/lambda/MONOLITHTOEC2DB-IPv6WorkaroundLambda-9sLKxjPPo2sh:*",
+            "storedBytes": 7145,
+            "logGroupClass": "STANDARD",
+            "logGroupArn": "arn:aws:logs:us-east-1:429128462098:log-group:/aws/lambda/MONOLITHTOEC2DB-IPv6WorkaroundLambda-9sLKxjPPo2sh"
+        },
+        {
+            "logGroupName": "/aws/lambda/RekognitionScanLambda",
+            "creationTime": 1752103238185,
+            "metricFilterCount": 0,
+            "arn": "arn:aws:logs:us-east-1:429128462098:log-group:/aws/lambda/RekognitionScanLambda:*",
+            "storedBytes": 0,
+            "logGroupClass": "STANDARD",
+            "logGroupArn": "arn:aws:logs:us-east-1:429128462098:log-group:/aws/lambda/RekognitionScanLambda"
+        },
+        {
+            "logGroupName": "/var/log/httpd/access_log",
+            "creationTime": 1750130810706,
+            "metricFilterCount": 0,
+            "arn": "arn:aws:logs:us-east-1:429128462098:log-group:/var/log/httpd/access_log:*",
+            "storedBytes": 25122,
+            "logGroupClass": "STANDARD",
+            "logGroupArn": "arn:aws:logs:us-east-1:429128462098:log-group:/var/log/httpd/access_log"
+        },
+        {
+            "logGroupName": "/var/log/httpd/error_log",
+            "creationTime": 1750130673994,
+            "metricFilterCount": 0,
+            "arn": "arn:aws:logs:us-east-1:429128462098:log-group:/var/log/httpd/error_log:*",
+            "storedBytes": 666,
+            "logGroupClass": "STANDARD",
+            "logGroupArn": "arn:aws:logs:us-east-1:429128462098:log-group:/var/log/httpd/error_log"
+        },
+        {
+            "logGroupName": "/var/log/secure",
+            "creationTime": 1752040328678,
+            "metricFilterCount": 0,
+            "arn": "arn:aws:logs:us-east-1:429128462098:log-group:/var/log/secure:*",
+            "storedBytes": 0,
+            "logGroupClass": "STANDARD",
+            "logGroupArn": "arn:aws:logs:us-east-1:429128462098:log-group:/var/log/secure"
+        }
+    ]
+}

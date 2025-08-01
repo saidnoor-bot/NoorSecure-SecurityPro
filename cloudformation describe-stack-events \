@@ -1,0 +1,195 @@
+{
+    "StackEvents": [
+        {
+            "StackId": "arn:aws:cloudformation:us-east-1:429128462098:stack/NoorRekognitionStack/ea21bb30-5d63-11f0-8f8f-0affe39b9005",
+            "EventId": "RekognitionLambdaPermission-DELETE_COMPLETE-2025-07-10T09:01:10.977Z",
+            "StackName": "NoorRekognitionStack",
+            "LogicalResourceId": "RekognitionLambdaPermission",
+            "PhysicalResourceId": "NoorRekognitionStack-RekognitionLambdaPermission-o80ltFelPBmC",
+            "ResourceType": "AWS::Lambda::Permission",
+            "Timestamp": "2025-07-10T09:01:10.977000+00:00",
+            "ResourceStatus": "DELETE_COMPLETE",
+            "ResourceProperties": "{\"FunctionName\":\"NoorRekognitionFunction\",\"Action\":\"lambda:InvokeFunction\",\"SourceArn\":\"arn:aws:s3:::noorshare-user-uploads\",\"Principal\":\"s3.amazonaws.com\"}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:us-east-1:429128462098:stack/NoorRekognitionStack/ea21bb30-5d63-11f0-8f8f-0affe39b9005",
+            "EventId": "RekognitionLambdaPermission-DELETE_IN_PROGRESS-2025-07-10T09:01:10.040Z",
+            "StackName": "NoorRekognitionStack",
+            "LogicalResourceId": "RekognitionLambdaPermission",
+            "PhysicalResourceId": "NoorRekognitionStack-RekognitionLambdaPermission-o80ltFelPBmC",
+            "ResourceType": "AWS::Lambda::Permission",
+            "Timestamp": "2025-07-10T09:01:10.040000+00:00",
+            "ResourceStatus": "DELETE_IN_PROGRESS",
+            "ResourceProperties": "{\"FunctionName\":\"NoorRekognitionFunction\",\"Action\":\"lambda:InvokeFunction\",\"SourceArn\":\"arn:aws:s3:::noorshare-user-uploads\",\"Principal\":\"s3.amazonaws.com\"}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:us-east-1:429128462098:stack/NoorRekognitionStack/ea21bb30-5d63-11f0-8f8f-0affe39b9005",
+            "EventId": "S3BucketNotification-DELETE_IN_PROGRESS-2025-07-10T09:01:10.017Z",
+            "StackName": "NoorRekognitionStack",
+            "LogicalResourceId": "S3BucketNotification",
+            "PhysicalResourceId": "NoorRekognitionStack-S3BucketNotification-12HU19SA1JURW",
+            "ResourceType": "Custom::S3BucketNotification",
+            "Timestamp": "2025-07-10T09:01:10.017000+00:00",
+            "ResourceStatus": "DELETE_IN_PROGRESS",
+            "ResourceProperties": "{\"ServiceToken\":\"arn:aws:lambda:us-east-1:429128462098:function:NoorRekognitionFunction\",\"Bucket\":\"noorshare-user-uploads\",\"NotificationConfiguration\":{\"LambdaFunctionConfigurations\":[{\"LambdaFunctionArn\":\"arn:aws:lambda:us-east-1:429128462098:function:NoorRekognitionFunction\",\"Event\":\"s3:ObjectCreated:*\"}]}}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:us-east-1:429128462098:stack/NoorRekognitionStack/ea21bb30-5d63-11f0-8f8f-0affe39b9005",
+            "EventId": "6b13db80-5d6c-11f0-8217-1267deedda0b",
+            "StackName": "NoorRekognitionStack",
+            "LogicalResourceId": "NoorRekognitionStack",
+            "PhysicalResourceId": "arn:aws:cloudformation:us-east-1:429128462098:stack/NoorRekognitionStack/ea21bb30-5d63-11f0-8f8f-0affe39b9005",
+            "ResourceType": "AWS::CloudFormation::Stack",
+            "Timestamp": "2025-07-10T09:01:08.269000+00:00",
+            "ResourceStatus": "ROLLBACK_IN_PROGRESS",
+            "ResourceStatusReason": "The following resource(s) failed to create: [S3BucketNotification]. Rollback requested by user."
+        },
+        {
+            "StackId": "arn:aws:cloudformation:us-east-1:429128462098:stack/NoorRekognitionStack/ea21bb30-5d63-11f0-8f8f-0affe39b9005",
+            "EventId": "S3BucketNotification-CREATE_FAILED-2025-07-10T09:01:07.943Z",
+            "StackName": "NoorRekognitionStack",
+            "LogicalResourceId": "S3BucketNotification",
+            "PhysicalResourceId": "NoorRekognitionStack-S3BucketNotification-12HU19SA1JURW",
+            "ResourceType": "Custom::S3BucketNotification",
+            "Timestamp": "2025-07-10T09:01:07.943000+00:00",
+            "ResourceStatus": "CREATE_FAILED",
+            "ResourceStatusReason": "CloudFormation did not receive a response from your Custom Resource. Please check your logs for requestId [cd80f87e-903c-4b94-ab42-d926d9b0c7ac]. If you are using the Python cfn-response module, you may need to update your Lambda function code so that CloudFormation can attach the updated version.",
+            "ResourceProperties": "{\"ServiceToken\":\"arn:aws:lambda:us-east-1:429128462098:function:NoorRekognitionFunction\",\"Bucket\":\"noorshare-user-uploads\",\"NotificationConfiguration\":{\"LambdaFunctionConfigurations\":[{\"LambdaFunctionArn\":\"arn:aws:lambda:us-east-1:429128462098:function:NoorRekognitionFunction\",\"Event\":\"s3:ObjectCreated:*\"}]}}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:us-east-1:429128462098:stack/NoorRekognitionStack/ea21bb30-5d63-11f0-8f8f-0affe39b9005",
+            "EventId": "RekognitionLambdaPermission-CREATE_COMPLETE-2025-07-10T08:00:52.460Z",
+            "StackName": "NoorRekognitionStack",
+            "LogicalResourceId": "RekognitionLambdaPermission",
+            "PhysicalResourceId": "NoorRekognitionStack-RekognitionLambdaPermission-o80ltFelPBmC",
+            "ResourceType": "AWS::Lambda::Permission",
+            "Timestamp": "2025-07-10T08:00:52.460000+00:00",
+            "ResourceStatus": "CREATE_COMPLETE",
+            "ResourceProperties": "{\"FunctionName\":\"NoorRekognitionFunction\",\"Action\":\"lambda:InvokeFunction\",\"SourceArn\":\"arn:aws:s3:::noorshare-user-uploads\",\"Principal\":\"s3.amazonaws.com\"}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:us-east-1:429128462098:stack/NoorRekognitionStack/ea21bb30-5d63-11f0-8f8f-0affe39b9005",
+            "EventId": "RekognitionLambdaPermission-CREATE_IN_PROGRESS-2025-07-10T08:00:51.915Z",
+            "StackName": "NoorRekognitionStack",
+            "LogicalResourceId": "RekognitionLambdaPermission",
+            "PhysicalResourceId": "NoorRekognitionStack-RekognitionLambdaPermission-o80ltFelPBmC",
+            "ResourceType": "AWS::Lambda::Permission",
+            "Timestamp": "2025-07-10T08:00:51.915000+00:00",
+            "ResourceStatus": "CREATE_IN_PROGRESS",
+            "ResourceStatusReason": "Resource creation Initiated",
+            "ResourceProperties": "{\"FunctionName\":\"NoorRekognitionFunction\",\"Action\":\"lambda:InvokeFunction\",\"SourceArn\":\"arn:aws:s3:::noorshare-user-uploads\",\"Principal\":\"s3.amazonaws.com\"}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:us-east-1:429128462098:stack/NoorRekognitionStack/ea21bb30-5d63-11f0-8f8f-0affe39b9005",
+            "EventId": "S3BucketNotification-CREATE_IN_PROGRESS-2025-07-10T08:00:51.068Z",
+            "StackName": "NoorRekognitionStack",
+            "LogicalResourceId": "S3BucketNotification",
+            "PhysicalResourceId": "",
+            "ResourceType": "Custom::S3BucketNotification",
+            "Timestamp": "2025-07-10T08:00:51.068000+00:00",
+            "ResourceStatus": "CREATE_IN_PROGRESS",
+            "ResourceProperties": "{\"ServiceToken\":\"arn:aws:lambda:us-east-1:429128462098:function:NoorRekognitionFunction\",\"Bucket\":\"noorshare-user-uploads\",\"NotificationConfiguration\":{\"LambdaFunctionConfigurations\":[{\"LambdaFunctionArn\":\"arn:aws:lambda:us-east-1:429128462098:function:NoorRekognitionFunction\",\"Event\":\"s3:ObjectCreated:*\"}]}}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:us-east-1:429128462098:stack/NoorRekognitionStack/ea21bb30-5d63-11f0-8f8f-0affe39b9005",
+            "EventId": "RekognitionLambdaPermission-CREATE_IN_PROGRESS-2025-07-10T08:00:50.951Z",
+            "StackName": "NoorRekognitionStack",
+            "LogicalResourceId": "RekognitionLambdaPermission",
+            "PhysicalResourceId": "",
+            "ResourceType": "AWS::Lambda::Permission",
+            "Timestamp": "2025-07-10T08:00:50.951000+00:00",
+            "ResourceStatus": "CREATE_IN_PROGRESS",
+            "ResourceProperties": "{\"FunctionName\":\"NoorRekognitionFunction\",\"Action\":\"lambda:InvokeFunction\",\"SourceArn\":\"arn:aws:s3:::noorshare-user-uploads\",\"Principal\":\"s3.amazonaws.com\"}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:us-east-1:429128462098:stack/NoorRekognitionStack/ea21bb30-5d63-11f0-8f8f-0affe39b9005",
+            "EventId": "RekognitionLambda-CREATE_COMPLETE-2025-07-10T08:00:50.503Z",
+            "StackName": "NoorRekognitionStack",
+            "LogicalResourceId": "RekognitionLambda",
+            "PhysicalResourceId": "NoorRekognitionFunction",
+            "ResourceType": "AWS::Lambda::Function",
+            "Timestamp": "2025-07-10T08:00:50.503000+00:00",
+            "ResourceStatus": "CREATE_COMPLETE",
+            "ResourceProperties": "{\"Role\":\"arn:aws:iam::429128462098:role/NoorRekognitionStack-RekognitionLambdaRole-71PowUjaXG6c\",\"FunctionName\":\"NoorRekognitionFunction\",\"Runtime\":\"python3.12\",\"Timeout\":\"15\",\"Handler\":\"index.handler\",\"Code\":{\"ZipFile\":\"import json\\ndef handler(event, context):\\n    print(\\\"Rekognition trigger received event:\\\")\\n    print(json.dumps(event))\\n    return {\\\"statusCode\\\": 200, \\\"body\\\": \\\"Processed\\\"}\\n\"}}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:us-east-1:429128462098:stack/NoorRekognitionStack/ea21bb30-5d63-11f0-8f8f-0affe39b9005",
+            "EventId": "RekognitionLambda-CREATE_IN_PROGRESS-2025-07-10T08:00:42.758Z",
+            "StackName": "NoorRekognitionStack",
+            "LogicalResourceId": "RekognitionLambda",
+            "PhysicalResourceId": "NoorRekognitionFunction",
+            "ResourceType": "AWS::Lambda::Function",
+            "Timestamp": "2025-07-10T08:00:42.758000+00:00",
+            "ResourceStatus": "CREATE_IN_PROGRESS",
+            "ResourceStatusReason": "Resource creation Initiated",
+            "ResourceProperties": "{\"Role\":\"arn:aws:iam::429128462098:role/NoorRekognitionStack-RekognitionLambdaRole-71PowUjaXG6c\",\"FunctionName\":\"NoorRekognitionFunction\",\"Runtime\":\"python3.12\",\"Timeout\":\"15\",\"Handler\":\"index.handler\",\"Code\":{\"ZipFile\":\"import json\\ndef handler(event, context):\\n    print(\\\"Rekognition trigger received event:\\\")\\n    print(json.dumps(event))\\n    return {\\\"statusCode\\\": 200, \\\"body\\\": \\\"Processed\\\"}\\n\"}}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:us-east-1:429128462098:stack/NoorRekognitionStack/ea21bb30-5d63-11f0-8f8f-0affe39b9005",
+            "EventId": "RekognitionLambda-CREATE_IN_PROGRESS-2025-07-10T08:00:41.659Z",
+            "StackName": "NoorRekognitionStack",
+            "LogicalResourceId": "RekognitionLambda",
+            "PhysicalResourceId": "",
+            "ResourceType": "AWS::Lambda::Function",
+            "Timestamp": "2025-07-10T08:00:41.659000+00:00",
+            "ResourceStatus": "CREATE_IN_PROGRESS",
+            "ResourceProperties": "{\"Role\":\"arn:aws:iam::429128462098:role/NoorRekognitionStack-RekognitionLambdaRole-71PowUjaXG6c\",\"FunctionName\":\"NoorRekognitionFunction\",\"Runtime\":\"python3.12\",\"Timeout\":\"15\",\"Handler\":\"index.handler\",\"Code\":{\"ZipFile\":\"import json\\ndef handler(event, context):\\n    print(\\\"Rekognition trigger received event:\\\")\\n    print(json.dumps(event))\\n    return {\\\"statusCode\\\": 200, \\\"body\\\": \\\"Processed\\\"}\\n\"}}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:us-east-1:429128462098:stack/NoorRekognitionStack/ea21bb30-5d63-11f0-8f8f-0affe39b9005",
+            "EventId": "RekognitionLambdaRole-CREATE_COMPLETE-2025-07-10T08:00:40.855Z",
+            "StackName": "NoorRekognitionStack",
+            "LogicalResourceId": "RekognitionLambdaRole",
+            "PhysicalResourceId": "NoorRekognitionStack-RekognitionLambdaRole-71PowUjaXG6c",
+            "ResourceType": "AWS::IAM::Role",
+            "Timestamp": "2025-07-10T08:00:40.855000+00:00",
+            "ResourceStatus": "CREATE_COMPLETE",
+            "ResourceProperties": "{\"Policies\":[{\"PolicyName\":\"RekognitionLambdaPolicy\",\"PolicyDocument\":{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":[\"rekognition:DetectLabels\",\"s3:GetObject\"],\"Resource\":\"*\",\"Effect\":\"Allow\"}]}}],\"AssumeRolePolicyDocument\":{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"lambda.amazonaws.com\"}}]}}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:us-east-1:429128462098:stack/NoorRekognitionStack/ea21bb30-5d63-11f0-8f8f-0affe39b9005",
+            "EventId": "RekognitionLambdaRole-CREATE_IN_PROGRESS-2025-07-10T08:00:24.334Z",
+            "StackName": "NoorRekognitionStack",
+            "LogicalResourceId": "RekognitionLambdaRole",
+            "PhysicalResourceId": "NoorRekognitionStack-RekognitionLambdaRole-71PowUjaXG6c",
+            "ResourceType": "AWS::IAM::Role",
+            "Timestamp": "2025-07-10T08:00:24.334000+00:00",
+            "ResourceStatus": "CREATE_IN_PROGRESS",
+            "ResourceStatusReason": "Resource creation Initiated",
+            "ResourceProperties": "{\"Policies\":[{\"PolicyName\":\"RekognitionLambdaPolicy\",\"PolicyDocument\":{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":[\"rekognition:DetectLabels\",\"s3:GetObject\"],\"Resource\":\"*\",\"Effect\":\"Allow\"}]}}],\"AssumeRolePolicyDocument\":{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"lambda.amazonaws.com\"}}]}}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:us-east-1:429128462098:stack/NoorRekognitionStack/ea21bb30-5d63-11f0-8f8f-0affe39b9005",
+            "EventId": "RekognitionLambdaRole-CREATE_IN_PROGRESS-2025-07-10T08:00:23.510Z",
+            "StackName": "NoorRekognitionStack",
+            "LogicalResourceId": "RekognitionLambdaRole",
+            "PhysicalResourceId": "",
+            "ResourceType": "AWS::IAM::Role",
+            "Timestamp": "2025-07-10T08:00:23.510000+00:00",
+            "ResourceStatus": "CREATE_IN_PROGRESS",
+            "ResourceProperties": "{\"Policies\":[{\"PolicyName\":\"RekognitionLambdaPolicy\",\"PolicyDocument\":{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":[\"rekognition:DetectLabels\",\"s3:GetObject\"],\"Resource\":\"*\",\"Effect\":\"Allow\"}]}}],\"AssumeRolePolicyDocument\":{\"Version\":\"2012-10-17\",\"Statement\":[{\"Action\":\"sts:AssumeRole\",\"Effect\":\"Allow\",\"Principal\":{\"Service\":\"lambda.amazonaws.com\"}}]}}"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:us-east-1:429128462098:stack/NoorRekognitionStack/ea21bb30-5d63-11f0-8f8f-0affe39b9005",
+            "EventId": "ed61f210-5d63-11f0-83c0-0affccb0cbdb",
+            "StackName": "NoorRekognitionStack",
+            "LogicalResourceId": "NoorRekognitionStack",
+            "PhysicalResourceId": "arn:aws:cloudformation:us-east-1:429128462098:stack/NoorRekognitionStack/ea21bb30-5d63-11f0-8f8f-0affe39b9005",
+            "ResourceType": "AWS::CloudFormation::Stack",
+            "Timestamp": "2025-07-10T08:00:21.408000+00:00",
+            "ResourceStatus": "CREATE_IN_PROGRESS",
+            "ResourceStatusReason": "User Initiated"
+        },
+        {
+            "StackId": "arn:aws:cloudformation:us-east-1:429128462098:stack/NoorRekognitionStack/ea21bb30-5d63-11f0-8f8f-0affe39b9005",
+            "EventId": "ea216d10-5d63-11f0-8f8f-0affe39b9005",
+            "StackName": "NoorRekognitionStack",
+            "LogicalResourceId": "NoorRekognitionStack",
+            "PhysicalResourceId": "arn:aws:cloudformation:us-east-1:429128462098:stack/NoorRekognitionStack/ea21bb30-5d63-11f0-8f8f-0affe39b9005",
+            "ResourceType": "AWS::CloudFormation::Stack",
+            "Timestamp": "2025-07-10T08:00:16.031000+00:00",
+            "ResourceStatus": "REVIEW_IN_PROGRESS",
+            "ResourceStatusReason": "User Initiated"
+        }
+    ]
+}

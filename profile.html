@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NoorShare - User Profile</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .profile { max-width: 600px; margin: 0 auto; }
+        .profile-header { text-align: center; margin-bottom: 30px; }
+        .profile-avatar { width: 100px; height: 100px; border-radius: 50%; background: #eee; margin: 0 auto; }
+        .profile-name { font-size: 24px; margin-top: 10px; }
+        .profile-email { color: #666; }
+        .profile-stats { display: flex; justify-content: space-around; margin: 20px 0; }
+        .stat { text-align: center; }
+        .stat-value { font-size: 24px; font-weight: bold; }
+        .stat-label { color: #666; }
+        .profile-actions { text-align: center; margin-top: 20px; }
+        .btn { padding: 10px 15px; background: #4CAF50; color: white; border: none; cursor: pointer; margin: 0 5px; }
+    </style>
+</head>
+<body>
+    <div class="profile">
+        <div class="profile-header">
+            <div class="profile-avatar"></div>
+            <div class="profile-name">John Doe</div>
+            <div class="profile-email">john.doe@example.com</div>
+        </div>
+        
+        <div class="profile-stats">
+            <div class="stat">
+                <div class="stat-value">15</div>
+                <div class="stat-label">Files</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">2.3 GB</div>
+                <div class="stat-label">Storage Used</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">5</div>
+                <div class="stat-label">Shared Files</div>
+            </div>
+        </div>
+        
+        <div class="profile-actions">
+            <button class="btn">Edit Profile</button>
+            <button class="btn">Change Password</button>
+        </div>
+        
+        <p style="text-align: center; margin-top: 30px;">Note: This is a static example. In a real application, this would be dynamically generated.</p>
+    </div>
+</body>
+</html>

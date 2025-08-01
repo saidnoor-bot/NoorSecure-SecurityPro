@@ -1,0 +1,162 @@
+{
+    "StackSummaries": [
+        {
+            "StackId": "arn:aws:cloudformation:us-east-1:429128462098:stack/StateMachineRole/98579f40-6d17-11f0-88e1-0e23b58d8e69",
+            "StackName": "StateMachineRole",
+            "CreationTime": "2025-07-30T07:34:15.731000+00:00",
+            "DeletionTime": "2025-07-30T10:19:51.969000+00:00",
+            "StackStatus": "DELETE_COMPLETE",
+            "DriftInformation": {
+                "StackDriftStatus": "NOT_CHECKED"
+            }
+        },
+        {
+            "StackId": "arn:aws:cloudformation:us-east-1:429128462098:stack/LAMBDAROLE/83d63600-6d15-11f0-9abb-12f39abad5ab",
+            "StackName": "LAMBDAROLE",
+            "CreationTime": "2025-07-30T07:19:22.356000+00:00",
+            "DeletionTime": "2025-07-30T10:19:52.829000+00:00",
+            "StackStatus": "DELETE_COMPLETE",
+            "DriftInformation": {
+                "StackDriftStatus": "NOT_CHECKED"
+            }
+        },
+        {
+            "StackId": "arn:aws:cloudformation:us-east-1:429128462098:stack/NoorRekognitionStack/ea21bb30-5d63-11f0-8f8f-0affe39b9005",
+            "StackName": "NoorRekognitionStack",
+            "CreationTime": "2025-07-10T08:00:16.031000+00:00",
+            "LastUpdatedTime": "2025-07-10T08:00:21.408000+00:00",
+            "DeletionTime": "2025-07-10T20:44:38.704000+00:00",
+            "StackStatus": "DELETE_COMPLETE",
+            "DriftInformation": {
+                "StackDriftStatus": "NOT_CHECKED"
+            }
+        },
+        {
+            "StackId": "arn:aws:cloudformation:us-east-1:429128462098:stack/NoorRekognitionStack/6e0ea5f0-5d61-11f0-af5b-0afff8159469",
+            "StackName": "NoorRekognitionStack",
+            "TemplateDescription": "Rekognition Lambda Integration with S3 Upload Bucket",
+            "CreationTime": "2025-07-10T07:50:21.408000+00:00",
+            "LastUpdatedTime": "2025-07-10T07:50:26.711000+00:00",
+            "DeletionTime": "2025-07-10T07:59:44.004000+00:00",
+            "StackStatus": "DELETE_COMPLETE",
+            "DriftInformation": {
+                "StackDriftStatus": "NOT_CHECKED"
+            }
+        },
+        {
+            "StackId": "arn:aws:cloudformation:us-east-1:429128462098:stack/NoorUserStack/d82e9360-5d60-11f0-abf7-1237f60c2ecb",
+            "StackName": "NoorUserStack",
+            "TemplateDescription": "Cognito User Pool + Identity Pool + IAM roles + S3 access for NoorShare",
+            "CreationTime": "2025-07-10T07:38:17.449000+00:00",
+            "LastUpdatedTime": "2025-07-10T07:38:22.799000+00:00",
+            "DeletionTime": "2025-07-30T06:38:33.488000+00:00",
+            "StackStatus": "DELETE_COMPLETE",
+            "DriftInformation": {
+                "StackDriftStatus": "NOT_CHECKED"
+            }
+        },
+        {
+            "StackId": "arn:aws:cloudformation:us-east-1:429128462098:stack/NoorSecureUploadStack/619e3680-5d54-11f0-9b56-0e2cd04dbc83",
+            "StackName": "NoorSecureUploadStack",
+            "TemplateDescription": "Secure S3 Uploads with Cognito + PreSigned URL",
+            "CreationTime": "2025-07-10T06:29:50.635000+00:00",
+            "LastUpdatedTime": "2025-07-10T06:32:56.215000+00:00",
+            "DeletionTime": "2025-07-30T06:44:01.613000+00:00",
+            "StackStatus": "DELETE_COMPLETE",
+            "DriftInformation": {
+                "StackDriftStatus": "NOT_CHECKED"
+            }
+        },
+        {
+            "StackId": "arn:aws:cloudformation:us-east-1:429128462098:stack/NoorWebStack/ea119e50-5d52-11f0-a993-0ee9fd7d467d",
+            "StackName": "NoorWebStack",
+            "TemplateDescription": "Full NoorWebStack with ALB, EC2, Lambda Moderation, IAM Roles, and S3 Bucket",
+            "CreationTime": "2025-07-10T05:58:34.501000+00:00",
+            "LastUpdatedTime": "2025-07-10T05:58:39.842000+00:00",
+            "DeletionTime": "2025-07-30T06:38:44.190000+00:00",
+            "StackStatus": "DELETE_COMPLETE",
+            "DriftInformation": {
+                "StackDriftStatus": "NOT_CHECKED"
+            }
+        },
+        {
+            "StackId": "arn:aws:cloudformation:us-east-1:429128462098:stack/NoorWebStack/bb882000-5d51-11f0-90d3-0affc3de2583",
+            "StackName": "NoorWebStack",
+            "TemplateDescription": "Full NoorWebStack with ALB, EC2, Lambda Moderation, IAM Roles, and S3 Bucket",
+            "CreationTime": "2025-07-10T05:50:06.924000+00:00",
+            "LastUpdatedTime": "2025-07-10T05:50:12.276000+00:00",
+            "DeletionTime": "2025-07-10T05:56:28.298000+00:00",
+            "StackStatus": "DELETE_COMPLETE",
+            "DriftInformation": {
+                "StackDriftStatus": "NOT_CHECKED"
+            }
+        },
+        {
+            "StackId": "arn:aws:cloudformation:us-east-1:429128462098:stack/NoorWebStack/1ee03670-5d51-11f0-9ffd-0e8feaf1dd0b",
+            "StackName": "NoorWebStack",
+            "TemplateDescription": "Full NoorWebStack with ALB, EC2, Lambda Moderation, IAM Roles, and S3 Bucket",
+            "CreationTime": "2025-07-10T05:45:44.109000+00:00",
+            "LastUpdatedTime": "2025-07-10T05:45:49.399000+00:00",
+            "DeletionTime": "2025-07-10T05:49:40.044000+00:00",
+            "StackStatus": "DELETE_COMPLETE",
+            "DriftInformation": {
+                "StackDriftStatus": "NOT_CHECKED"
+            }
+        },
+        {
+            "StackId": "arn:aws:cloudformation:us-east-1:429128462098:stack/NoorWebStack/03dd5230-5d48-11f0-a676-0e7d212c43c5",
+            "StackName": "NoorWebStack",
+            "TemplateDescription": "EC2 with ALB and UserData to install Apache",
+            "CreationTime": "2025-07-10T04:40:33.344000+00:00",
+            "LastUpdatedTime": "2025-07-10T05:04:38.908000+00:00",
+            "DeletionTime": "2025-07-10T05:37:28.776000+00:00",
+            "StackStatus": "DELETE_COMPLETE",
+            "DriftInformation": {
+                "StackDriftStatus": "NOT_CHECKED"
+            }
+        },
+        {
+            "StackId": "arn:aws:cloudformation:us-east-1:429128462098:stack/NoorWebStack/5b217aa0-5d46-11f0-854b-0eb84c832c19",
+            "StackName": "NoorWebStack",
+            "CreationTime": "2025-07-10T04:33:13.671000+00:00",
+            "LastUpdatedTime": "2025-07-10T04:33:19.024000+00:00",
+            "DeletionTime": "2025-07-10T04:39:51.130000+00:00",
+            "StackStatus": "DELETE_COMPLETE",
+            "DriftInformation": {
+                "StackDriftStatus": "NOT_CHECKED"
+            }
+        },
+        {
+            "StackId": "arn:aws:cloudformation:us-east-1:429128462098:stack/NoorWebStack/24900430-5d45-11f0-8bb7-127992d92d77",
+            "StackName": "NoorWebStack",
+            "TemplateDescription": "Basic EC2 + ALB Stack in existing VPC",
+            "CreationTime": "2025-07-10T04:19:59.719000+00:00",
+            "LastUpdatedTime": "2025-07-10T04:20:05.072000+00:00",
+            "DeletionTime": "2025-07-10T04:27:35.108000+00:00",
+            "StackStatus": "DELETE_COMPLETE",
+            "DriftInformation": {
+                "StackDriftStatus": "NOT_CHECKED"
+            }
+        },
+        {
+            "StackId": "arn:aws:cloudformation:us-east-1:429128462098:stack/A4L/998da570-5c88-11f0-a31d-128cb19af0a7",
+            "StackName": "A4L",
+            "TemplateDescription": "Animals4Life Hosting Inc - Role Invalidation DEMO",
+            "CreationTime": "2025-07-09T05:50:21.168000+00:00",
+            "DeletionTime": "2025-07-09T06:24:19.516000+00:00",
+            "StackStatus": "DELETE_COMPLETE",
+            "DriftInformation": {
+                "StackDriftStatus": "NOT_CHECKED"
+            }
+        },
+        {
+            "StackId": "arn:aws:cloudformation:us-east-1:429128462098:stack/MONOLITHTOEC2DB/2575eb80-4b2a-11f0-b41c-0affebe9607d",
+            "StackName": "MONOLITHTOEC2DB",
+            "TemplateDescription": "Animals4Life base VPC Template + Boostrapped Wordpress + Empty MariaDB EC2",
+            "CreationTime": "2025-06-17T03:21:23.965000+00:00",
+            "DeletionTime": "2025-06-17T03:48:44.441000+00:00",
+            "StackStatus": "DELETE_COMPLETE",
+            "DriftInformation": {
+                "StackDriftStatus": "NOT_CHECKED"
+            }
+     

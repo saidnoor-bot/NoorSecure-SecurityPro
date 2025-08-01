@@ -1,0 +1,16 @@
+{
+    "IdentityPools": [
+        {
+            "IdentityPoolId": "us-east-1:1ccfafce-87b6-4c11-b65b-90a4b7711544",
+            "IdentityPoolName": "NoorShareIdentityPool"
+        },
+        {
+            "IdentityPoolId": "us-east-1:65b2ef93-903a-461f-b523-f51bfbe8860d",
+            "IdentityPoolName": "NoorShareIdentityPool"
+        },
+        {
+            "IdentityPoolId": "us-east-1:979f8c94-4913-4770-b64e-1eab320a36ed",
+            "IdentityPoolName": "NoorIdentityPool"
+        }
+    ]
+}

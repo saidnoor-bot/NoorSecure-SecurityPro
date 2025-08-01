@@ -1,0 +1,37 @@
+{
+    "Functions": [
+        {
+            "FunctionName": "email_reminderlambda",
+            "FunctionArn": "arn:aws:lambda:us-east-1:429128462098:function:email_reminderlambda",
+            "Runtime": "python3.9",
+            "Role": "arn:aws:iam::429128462098:role/LAMBDAROLE-LambdaRole-ReopOGGkr6Og",
+            "Handler": "lambda_function.lambda_handler",
+            "CodeSize": 510,
+            "Description": "",
+            "Timeout": 3,
+            "MemorySize": 128,
+            "LastModified": "2025-07-30T07:29:16.000+0000",
+            "CodeSha256": "paYFXq5kYpl4PAL6jDxgfWzc9CXImMEaa0Q0ka33hV0=",
+            "Version": "$LATEST",
+            "TracingConfig": {
+                "Mode": "PassThrough"
+            },
+            "RevisionId": "0a4503ae-f5a5-4639-a4a5-5d07205209a0",
+            "PackageType": "Zip",
+            "Architectures": [
+                "x86_64"
+            ],
+            "EphemeralStorage": {
+                "Size": 512
+            },
+            "SnapStart": {
+                "ApplyOn": "None",
+                "OptimizationStatus": "Off"
+            },
+            "LoggingConfig": {
+                "LogFormat": "Text",
+                "LogGroup": "/aws/lambda/email_reminderlambda"
+            }
+        }
+    ]
+}

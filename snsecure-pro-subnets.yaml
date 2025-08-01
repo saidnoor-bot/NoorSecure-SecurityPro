@@ -1,0 +1,81 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: snsecure-pro-subnets - 3-tier subnet architecture
+
+Parameters:
+  VpcId:
+    Type: String
+  AZs:
+    Type: CommaDelimitedList
+  ProjectTag:
+    Type: String
+  PublicRouteTableId:
+    Type: String
+
+Resources:
+  # Loop through 3 AZs: create 1 subnet of each type per AZ
+  PublicSubnet1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VpcId
+      AvailabilityZone: !Select [0, !Ref AZs]
+      CidrBlock: 10.20.1.0/24
+      MapPublicIpOnLaunch: true
+      Tags:
+        - Key: Name
+          Value: !Sub "${ProjectTag}-public-az1"
+        - Key: Project
+          Value: !Ref ProjectTag
+
+  PublicSubnet2:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VpcId
+      AvailabilityZone: !Select [1, !Ref AZs]
+      CidrBlock: 10.20.2.0/24
+      MapPublicIpOnLaunch: true
+      Tags:
+        - Key: Name
+          Value: !Sub "${ProjectTag}-public-az2"
+        - Key: Project
+          Value: !Ref ProjectTag
+
+  PublicSubnet3:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref VpcId
+      AvailabilityZone: !Select [2, !Ref AZs]
+      CidrBlock: 10.20.3.0/24
+      MapPublicIpOnLaunch: true
+      Tags:
+        - Key: Name
+          Value: !Sub "${ProjectTag}-public-az3"
+        - Key: Project
+          Value: !Ref ProjectTag
+
+  # Associate each public subnet with the route table
+  PublicSubnetRoute1:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref PublicSubnet1
+      RouteTableId: !Ref PublicRouteTableId
+
+  PublicSubnetRoute2:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref PublicSubnet2
+      RouteTableId: !Ref PublicRouteTableId
+
+  PublicSubnetRoute3:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref PublicSubnet3
+      RouteTableId: !Ref PublicRouteTableId
+
+Outputs:
+  PublicSubnet1Id:
+    Value: !Ref PublicSubnet1
+  PublicSubnet2Id:
+    Value: !Ref PublicSubnet2
+  PublicSubnet3Id:
+    Value: !Ref PublicSubnet3
+

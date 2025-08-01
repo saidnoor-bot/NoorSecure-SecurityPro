@@ -1,0 +1,39 @@
+{
+    "FunctionName": "TestS3Logger",
+    "FunctionArn": "arn:aws:lambda:us-east-1:429128462098:function:TestS3Logger",
+    "Runtime": "python3.12",
+    "Role": "arn:aws:iam::429128462098:role/LambdaRekognitionRole",
+    "Handler": "test_logger.lambda_handler",
+    "CodeSize": 276,
+    "Description": "",
+    "Timeout": 3,
+    "MemorySize": 128,
+    "LastModified": "2025-07-29T21:56:40.284+0000",
+    "CodeSha256": "tH50PJ/kGVhECfeJspodiYC1Fhfkr9Xz8yoshxM1d3k=",
+    "Version": "$LATEST",
+    "TracingConfig": {
+        "Mode": "PassThrough"
+    },
+    "RevisionId": "3944951c-a18c-435f-9bac-a3b2c111716b",
+    "State": "Pending",
+    "StateReason": "The function is being created.",
+    "StateReasonCode": "Creating",
+    "PackageType": "Zip",
+    "Architectures": [
+        "x86_64"
+    ],
+    "EphemeralStorage": {
+        "Size": 512
+    },
+    "SnapStart": {
+        "ApplyOn": "None",
+        "OptimizationStatus": "Off"
+    },
+    "RuntimeVersionConfig": {
+        "RuntimeVersionArn": "arn:aws:lambda:us-east-1::runtime:aa140c0e9a9c41d993cb36eaf76013968a27ec935d7665a4368d6b0ba10a0f7e"
+    },
+    "LoggingConfig": {
+        "LogFormat": "Text",
+        "LogGroup": "/aws/lambda/TestS3Logger"
+    }
+}

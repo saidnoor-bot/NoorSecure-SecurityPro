@@ -1,0 +1,66 @@
+{
+    "Stacks": [
+        {
+            "StackId": "arn:aws:cloudformation:us-east-1:429128462098:stack/NoorRekognitionStack/ea21bb30-5d63-11f0-8f8f-0affe39b9005",
+            "StackName": "NoorRekognitionStack",
+            "Parameters": [
+                {
+                    "ParameterKey": "RekognitionMinConfidence",
+                    "ParameterValue": "80"
+                },
+                {
+                    "ParameterKey": "UploadBucketName",
+                    "ParameterValue": "noorshare-user-uploads"
+                }
+            ],
+            "CreationTime": "2025-07-10T08:00:16.031000+00:00",
+            "DeletionTime": "2025-07-10T18:41:01.018000+00:00",
+            "LastUpdatedTime": "2025-07-10T08:00:21.408000+00:00",
+            "RollbackConfiguration": {},
+            "StackStatus": "DELETE_IN_PROGRESS",
+            "DisableRollback": false,
+            "NotificationARNs": [],
+            "Capabilities": [
+                "CAPABILITY_NAMED_IAM"
+            ],
+            "Tags": [],
+            "EnableTerminationProtection": false,
+            "DriftInformation": {
+                "StackDriftStatus": "NOT_CHECKED"
+            }
+        }
+    ]
+}
+{
+    "Stacks": [
+        {
+            "StackId": "arn:aws:cloudformation:us-east-1:429128462098:stack/NoorRekognitionStack/ea21bb30-5d63-11f0-8f8f-0affe39b9005",
+            "StackName": "NoorRekognitionStack",
+            "Parameters": [
+                {
+                    "ParameterKey": "RekognitionMinConfidence",
+                    "ParameterValue": "80"
+                },
+                {
+                    "ParameterKey": "UploadBucketName",
+                    "ParameterValue": "noorshare-user-uploads"
+                }
+            ],
+            "CreationTime": "2025-07-10T08:00:16.031000+00:00",
+            "DeletionTime": "2025-07-10T18:41:01.018000+00:00",
+            "LastUpdatedTime": "2025-07-10T08:00:21.408000+00:00",
+            "RollbackConfiguration": {},
+            "StackStatus": "DELETE_IN_PROGRESS",
+            "DisableRollback": false,
+            "NotificationARNs": [],
+            "Capabilities": [
+                "CAPABILITY_NAMED_IAM"
+            ],
+            "Tags": [],
+            "EnableTerminationProtection": false,
+            "DriftInformation": {
+                "StackDriftStatus": "NOT_CHECKED"
+            }
+        }
+    ]
+}

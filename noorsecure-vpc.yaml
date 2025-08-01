@@ -1,0 +1,165 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: NoorSecure - 3-tier VPC with 12 subnets, IGW, NAT, and route tables
+
+Parameters:
+  VpcCIDR:
+    Type: String
+    Default: 10.16.0.0/16
+
+Resources:
+
+  NoorSecureVPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: !Ref VpcCIDR
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
+      Tags:
+        - Key: Name
+          Value: NoorSecureVPC
+
+  InternetGateway:
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags:
+        - Key: Name
+          Value: NoorSecure-IGW
+
+  AttachGateway:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId: !Ref NoorSecureVPC
+      InternetGatewayId: !Ref InternetGateway
+
+  # ========================
+  # Subnets (3 AZs x 4 tiers)
+  # ========================
+
+  PublicSubnetA:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref NoorSecureVPC
+      CidrBlock: 10.16.0.0/24
+      AvailabilityZone: !Select [0, !GetAZs ""]
+      MapPublicIpOnLaunch: true
+      Tags:
+        - Key: Name
+          Value: NoorSecure-Public-A
+
+  PublicSubnetB:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref NoorSecureVPC
+      CidrBlock: 10.16.1.0/24
+      AvailabilityZone: !Select [1, !GetAZs ""]
+      MapPublicIpOnLaunch: true
+      Tags:
+        - Key: Name
+          Value: NoorSecure-Public-B
+
+  PublicSubnetC:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref NoorSecureVPC
+      CidrBlock: 10.16.2.0/24
+      AvailabilityZone: !Select [2, !GetAZs ""]
+      MapPublicIpOnLaunch: true
+      Tags:
+        - Key: Name
+          Value: NoorSecure-Public-C
+
+  AppSubnetA:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref NoorSecureVPC
+      CidrBlock: 10.16.10.0/24
+      AvailabilityZone: !Select [0, !GetAZs ""]
+      Tags:
+        - Key: Name
+          Value: NoorSecure-App-A
+
+  AppSubnetB:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref NoorSecureVPC
+      CidrBlock: 10.16.11.0/24
+      AvailabilityZone: !Select [1, !GetAZs ""]
+      Tags:
+        - Key: Name
+          Value: NoorSecure-App-B
+
+  AppSubnetC:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref NoorSecureVPC
+      CidrBlock: 10.16.12.0/24
+      AvailabilityZone: !Select [2, !GetAZs ""]
+      Tags:
+        - Key: Name
+          Value: NoorSecure-App-C
+
+  DBSubnetA:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref NoorSecureVPC
+      CidrBlock: 10.16.20.0/24
+      AvailabilityZone: !Select [0, !GetAZs ""]
+      Tags:
+        - Key: Name
+          Value: NoorSecure-DB-A
+
+  DBSubnetB:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref NoorSecureVPC
+      CidrBlock: 10.16.21.0/24
+      AvailabilityZone: !Select [1, !GetAZs ""]
+      Tags:
+        - Key: Name
+          Value: NoorSecure-DB-B
+
+  DBSubnetC:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref NoorSecureVPC
+      CidrBlock: 10.16.22.0/24
+      AvailabilityZone: !Select [2, !GetAZs ""]
+      Tags:
+        - Key: Name
+          Value: NoorSecure-DB-C
+
+  ReservedSubnetA:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref NoorSecureVPC
+      CidrBlock: 10.16.30.0/24
+      AvailabilityZone: !Select [0, !GetAZs ""]
+      Tags:
+        - Key: Name
+          Value: NoorSecure-Reserved-A
+
+  ReservedSubnetB:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref NoorSecureVPC
+      CidrBlock: 10.16.31.0/24
+      AvailabilityZone: !Select [1, !GetAZs ""]
+      Tags:
+        - Key: Name
+          Value: NoorSecure-Reserved-B
+
+  ReservedSubnetC:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref NoorSecureVPC
+      CidrBlock: 10.16.32.0/24
+      AvailabilityZone: !Select [2, !GetAZs ""]
+      Tags:
+        - Key: Name
+          Value: NoorSecure-Reserved-C
+
+Outputs:
+  VPC:
+    Value: !Ref NoorSecureVPC
+    Description: The NoorSecure VPC ID
+

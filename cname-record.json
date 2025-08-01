@@ -1,0 +1,18 @@
+{
+  "Comment": "Add CNAME for ACM validation",
+  "Changes": [
+    {
+      "Action": "UPSERT",
+      "ResourceRecordSet": {
+        "Name": "_cc610ca8368d7b56c24ca2161c7e62e1.login.noorshare.com.",
+        "Type": "CNAME",
+        "TTL": 300,
+        "ResourceRecords": [
+          {
+            "Value": "_9035c85f70723a3776bb38d3d573760b.xlfgrmvvlj.acm-validations.aws."
+          }
+        ]
+      }
+    }
+  ]
+}

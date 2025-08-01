@@ -1,0 +1,63 @@
+Parameters:
+  UploadBucketName:
+    Type: String
+  RekognitionMinConfidence:
+    Type: Number
+    Default: 80
+
+Resources:
+  RekognitionLambda:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: NoorRekognitionFunction
+      Handler: index.handler
+      Runtime: python3.12
+      Role: !GetAtt RekognitionLambdaRole.Arn
+      Timeout: 15
+      Code:
+        ZipFile: |
+          import json
+          def handler(event, context):
+              print("Rekognition trigger received event:")
+              print(json.dumps(event))
+              return {"statusCode": 200, "body": "Processed"}
+
+  RekognitionLambdaPermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      Action: lambda:InvokeFunction
+      FunctionName: !Ref RekognitionLambda
+      Principal: s3.amazonaws.com
+      SourceArn: !Sub arn:aws:s3:::${UploadBucketName}
+
+  S3BucketNotification:
+    Type: Custom::S3BucketNotification
+    Properties:
+      ServiceToken: !GetAtt RekognitionLambda.Arn
+      Bucket: !Ref UploadBucketName
+      NotificationConfiguration:
+        LambdaFunctionConfigurations:
+          - Event: s3:ObjectCreated:*
+            LambdaFunctionArn: !GetAtt RekognitionLambda.Arn
+
+  RekognitionLambdaRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      Policies:
+        - PolicyName: RekognitionLambdaPolicy
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - rekognition:DetectLabels
+                  - s3:GetObject
+                Resource: "*"
+

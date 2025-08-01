@@ -1,0 +1,49 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: snsecure-pro-encryption - KMS CMK with rotation and secure tagging
+
+Parameters:
+  ProjectTag:
+    Type: String
+    Default: snsecure-pro
+
+Resources:
+
+  KMSKey:
+    Type: AWS::KMS::Key
+    Properties:
+      Description: !Sub "KMS CMK for ${ProjectTag} - used for data encryption"
+      EnableKeyRotation: true
+      KeyPolicy:
+        Version: "2012-10-17"
+        Statement:
+          - Sid: AllowRootAccess
+            Effect: Allow
+            Principal:
+              AWS: !Sub "arn:aws:iam::${AWS::AccountId}:root"
+            Action: "kms:*"
+            Resource: "*"
+      Tags:
+        - Key: Name
+          Value: !Sub "${ProjectTag}-cmk"
+        - Key: Project
+          Value: !Ref ProjectTag
+
+  KMSKeyAlias:
+    Type: AWS::KMS::Alias
+    Properties:
+      AliasName: !Sub "alias/${ProjectTag}-cmk"
+      TargetKeyId: !Ref KMSKey
+
+Outputs:
+  CMKKeyId:
+    Description: KMS CMK ID
+    Value: !Ref KMSKey
+
+  CMKKeyArn:
+    Description: KMS CMK ARN
+    Value: !GetAtt KMSKey.Arn
+
+  CMKAlias:
+    Description: KMS CMK Alias
+    Value: !Ref KMSKeyAlias
+

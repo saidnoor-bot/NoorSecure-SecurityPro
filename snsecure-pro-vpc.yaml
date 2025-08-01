@@ -1,0 +1,87 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: snsecure-pro-vpc - 3-tier secure VPC across 3 AZs
+
+Parameters:
+  VpcCIDR:
+    Type: String
+    Default: 10.20.0.0/16
+
+  AZs:
+    Type: List<AWS::EC2::AvailabilityZone::Name>
+    Default: "us-east-1a,us-east-1b,us-east-1c"
+
+  ProjectTag:
+    Type: String
+    Default: snsecure-pro
+
+Resources:
+
+  VPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: !Ref VpcCIDR
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
+      Tags:
+        - Key: Name
+          Value: !Sub "${ProjectTag}-vpc"
+        - Key: Project
+          Value: !Ref ProjectTag
+
+  InternetGateway:
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags:
+        - Key: Name
+          Value: !Sub "${ProjectTag}-igw"
+        - Key: Project
+          Value: !Ref ProjectTag
+
+  AttachGateway:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId: !Ref VPC
+      InternetGatewayId: !Ref InternetGateway
+
+  PublicRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref VPC
+      Tags:
+        - Key: Name
+          Value: !Sub "${ProjectTag}-public-rt"
+        - Key: Project
+          Value: !Ref ProjectTag
+
+  PublicRoute:
+    Type: AWS::EC2::Route
+    DependsOn: AttachGateway
+    Properties:
+      RouteTableId: !Ref PublicRouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId: !Ref InternetGateway
+
+  # Subnets created via nested stack
+  SubnetConfig:
+    Type: AWS::CloudFormation::Stack
+    Properties:
+      TemplateURL: https://snsecure-pro-bucket.s3.amazonaws.com/snsecure-pro-subnets.yaml
+      Parameters:
+        VpcId: !Ref VPC
+        AZs: !Join [",", !Ref AZs]
+        ProjectTag: !Ref ProjectTag
+        PublicRouteTableId: !Ref PublicRouteTable
+
+Outputs:
+  VPCId:
+    Description: VPC ID
+    Value: !Ref VPC
+
+  InternetGatewayId:
+    Description: IGW ID
+    Value: !Ref InternetGateway
+
+  PublicRouteTableId:
+    Description: Public Route Table ID
+    Value: !Ref PublicRouteTable
+

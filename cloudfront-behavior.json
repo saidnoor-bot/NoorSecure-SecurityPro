@@ -1,0 +1,16 @@
+{
+  "TargetOriginId": "S3-noorshare-origin",
+  "ViewerProtocolPolicy": "redirect-to-https",
+  "AllowedMethods": ["GET", "HEAD"],
+  "ForwardedValues": {
+    "QueryString": false,
+    "Cookies": {
+      "Forward": "none"
+    }
+  },
+  "Compress": true,
+  "TrustedSigners": {
+    "Enabled": false,
+    "Quantity": 0
+  }
+}

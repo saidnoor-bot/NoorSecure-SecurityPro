@@ -1,0 +1,33 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: Security stack for CloudTrail, alarms, and SNS integration
+
+Resources:
+
+  SecurityTrail:
+    Type: AWS::CloudTrail::Trail
+    Properties:
+      TrailName: SecurityTrail
+      S3BucketName: stackmultistock-security-logs-429128462098
+      IsLogging: true
+      IncludeGlobalServiceEvents: true
+      IsMultiRegionTrail: true
+      EnableLogFileValidation: true
+
+  UnauthorizedAPICallAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmName: UnauthorizedAPICall
+      MetricName: 4xxError
+      Namespace: AWS/CloudTrail
+      Statistic: Sum
+      Period: 300
+      EvaluationPeriods: 1
+      Threshold: 1
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      AlarmActions:
+        - arn:aws:sns:us-east-1:429128462098:StackMultiStockSecurityAlerts
+      Dimensions:
+        - Name: EventName
+          Value: ConsoleLogin
+      TreatMissingData: notBreaching
+

@@ -1,0 +1,25 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: NoorSecure IAM Stack - Least privilege roles for AWS Config
+
+Resources:
+  ConfigRole:
+    Type: AWS::IAM::Role
+    Properties:
+      RoleName: NoorSecureAWSConfigRole
+      AssumeRolePolicyDocument:
+        Version: "2012-10-17"
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: config.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSConfigRole
+
+Outputs:
+  NoorSecureConfigRoleArn:
+    Description: ARN of the IAM Role for AWS Config
+    Value: !GetAtt ConfigRole.Arn
+    Export:
+      Name: NoorSecureConfigRoleArn
+
